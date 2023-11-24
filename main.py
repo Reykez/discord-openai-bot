@@ -12,7 +12,6 @@ print("Starting discord bot...")
 nest_asyncio.apply()
 
 # DISCORD BOT
-openai.api_key = openai_token
 intents = discord.Intents.default()
 intents.message_content = True
 bot = commands.Bot(command_prefix='$', intents=intents)
