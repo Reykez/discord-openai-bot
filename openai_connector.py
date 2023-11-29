@@ -1,4 +1,9 @@
-import openai
+from openai import OpenAI
+from settings import openai_token
+
+client = OpenAI(
+    api_key=openai_token
+)
 
 
 # Map conversation list into messages list that will be used in OpenAI API request.
@@ -24,8 +29,8 @@ def map_conversation(conversation: list, userMessage: str) -> list:
 def get_chat_response(messages: list) -> str:
     print('CHATGPT MESSAGE: ', messages)
 
-    completion = openai.ChatCompletion.create(
-        model="gpt-3.5-turbo",
+    completion = client.chat.completions.create(
+        model="gpt-4",
         messages=messages,
     )
 

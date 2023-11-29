@@ -1,0 +1,16 @@
+version: '3.8'
+services:
+  discord-openai-bot:
+    image: discord-openai:latest
+    container_name: discord-openai-bot
+    restart: unless-stopped
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      OPENAI_API_KEY: SECRET
+      DISCORD_API_KEY: SECRET
+      BASE_CHANNEL_ID: id
+      CHANNEL_CATEGORY_ID: id
+    volumes:
+      - /var/discord-openai-bot/conversations:/app/conversations # for storing conversations data
